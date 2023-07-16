@@ -101,8 +101,8 @@ body {
 .coutdown::before {
   content: "";
   position: absolute;
-  height: 10px;
-  width: 8px;
+  height: 5px;
+  width: 4px;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.448);
   top: 50%;
@@ -284,6 +284,8 @@ body {
 .footer {
   height: 180px;
   background: url(/images/pattern-hills.svg) center no-repeat;
+  background-position: center;
+
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -332,6 +334,11 @@ body {
   .coutdown {
     min-width: 150px;
     height: 140px;
+  }
+  .coutdown::after,
+  .coutdown::before {
+    height: 10px;
+    width: 8px;
   }
 
   .segment-display__top,
