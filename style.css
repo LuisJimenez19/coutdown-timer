@@ -1,0 +1,365 @@
+/* CUSTOM PROPIERTIES */
+:root {
+  /* COLORS */
+  /*  Primary */
+
+  --grayish-blue: hsl(237, 18%, 59%);
+  --soft-red: hsl(345, 95%, 68%);
+
+  /* Neutral */
+
+  --white: hsl(0, 0%, 100%);
+  --dark-desaturated-blue: hsl(236, 21%, 26%);
+  --very-dark-blue: hsl(235, 16%, 14%);
+  --very-dark-mostly-blue: hsl(234, 17%, 12%);
+
+  /* FONT */
+  --font: "Red Hat Text", sans-serif;
+}
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+body {
+  font-family: var(--font);
+  background: url(./images/bg-stars.svg),
+    linear-gradient(
+      180deg,
+      var(--very-dark-blue) 0%,
+      var(--very-dark-mostly-blue) 10%,
+      var(--very-dark-blue) 20%,
+      var(--very-dark-mostly-blue) 40%,
+      var(--very-dark-blue) 60%,
+      var(--very-dark-mostly-blue) 100%
+    );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  animation: bg-move 100s alternate infinite;
+  overflow: hidden;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  animation: fade-in 0.3s linear backwards;
+}
+.main__title {
+  font-size: 1.5em;
+  line-height: 2em;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.container-principal {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  max-width: 695px;
+}
+/* <-----------------------------COUTDOWN */
+.coutdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.coutdown {
+  display: block;
+  background-color: var(--dark-desaturated-blue);
+  min-width: 70px;
+  height: 70px;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.629);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.coutdown::after,
+.coutdown::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 8px;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.448);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.coutdown::after {
+  left: 0;
+  border-radius: 0 10px 10px 0;
+}
+.coutdown::before {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.segment-display {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.segment-display__top,
+.segment-display__bottom {
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  position: relative;
+}
+
+.segment-display__top {
+  line-height: 2.2;
+}
+
+.segment-display__bottom {
+  line-height: 0;
+}
+
+.segment-overlay {
+  position: absolute;
+  top: 0;
+  perspective: 400px;
+  height: 100%;
+  width: 100%;
+}
+
+.segment-overlay__top,
+.segment-overlay__bottom {
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+}
+.segment-display__top,
+.segment-display__bottom,
+.segment-overlay__top,
+.segment-overlay__bottom {
+  font-size: 2em;
+  color: var(--soft-red);
+}
+
+.segment-overlay__top {
+  top: 0;
+  line-height: 2.2;
+  transform-origin: bottom;
+  background-color: #2c2c44;
+}
+
+.segment-overlay__bottom {
+  bottom: 0;
+  line-height: 0;
+  background-color: var(--dark-desaturated-blue);
+  border-top: 1px solid var(--dark-desaturated-blue);
+  transform-origin: top;
+}
+
+.segment-overlay.flip .segment-overlay__top {
+  animation: flip-top 0.1s linear backwards;
+}
+
+.segment-overlay.flip .segment-overlay__bottom {
+  animation: flip-bottom 0.1s linear backwards;
+}
+
+@keyframes flip-top {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50%,
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flip-bottom {
+  0%,
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.coutdown__text {
+  color: var(--grayish-blue);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+@keyframes bg-move {
+  0% {
+    background-position: 10px;
+  }
+  10% {
+    background-position: 10px 10px;
+  }
+  20% {
+    background-position: left bottom;
+  }
+  30% {
+    background-position: right top;
+  }
+  40% {
+    background-position: right bottom;
+  }
+  50% {
+    background-position: top;
+  }
+  60% {
+    background-position: bottom;
+  }
+  70% {
+    background-position: bottom right;
+  }
+  80% {
+    background-position: top;
+  }
+  90% {
+    background-position: left top;
+  }
+  100% {
+    background-position: center;
+  }
+}
+
+@keyframes down-to-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes up-to-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ----------------FOOTER-------------------- */
+.footer {
+  height: 180px;
+  background: url(/images/pattern-hills.svg) center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  animation: down-to-up 0.3s linear backwards;
+}
+.footer__top {
+  flex-grow: 1;
+}
+.footer__social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2.5em;
+  animation: up-to-down 0.3s linear backwards;
+  animation-delay: 0.3s;
+}
+
+.footer__link {
+  display: inline-block;
+  color: var(--grayish-blue);
+  font-size: 1.85em;
+  transition: all 0.3s;
+}
+
+.footer__link:hover {
+  transform: scale(1.1);
+  color: var(--soft-red);
+  filter: drop-shadow(-2px 10px 20px var(--grayish-blue));
+}
+
+.footer__attribution {
+  text-align: center;
+  font-size: 0.9em;
+  padding-bottom: 10px;
+  animation: down-to-up 0.3s ease-in backwards;
+  animation-delay: 0.8s;
+}
+
+.footer__link.attribution {
+  font-size: 0.9em;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .coutdown {
+    min-width: 150px;
+    height: 140px;
+  }
+
+  .segment-display__top,
+  .segment-display__bottom,
+  .segment-overlay__top,
+  .segment-overlay__bottom {
+    font-size: 4em;
+  }
+  .coutdown__text {
+    font-size: 14px;
+  }
+
+  .footer {
+    height: 250px;
+  }
+}
+/* Convertir los milisegundos restantes a días, horas, minutos y segundos:
+    Después de obtener la diferencia en milisegundos, queremos convertirla a días, horas, minutos y segundos para mostrarla en la cuenta regresiva. Aquí es cómo lo hacemos:
+    
+    Segundos: Tomamos la diferencia en milisegundos y la dividimos por 1000 (1 segundo = 1000 
+    milisegundos). Utilizamos Math.floor() para redondear hacia abajo y obtener la parte entera de la 
+    división, ignorando los milisegundos restantes.
+    
+    Minutos: Tomamos los segundos calculados en el paso anterior y los dividimos por 60 (1 minuto = 60 
+    segundos). Nuevamente, utilizamos Math.floor() para obtener la parte entera de la división.
+    
+    Horas: Tomamos los minutos calculados y los dividimos por 60 (1 hora = 60 minutos). Redondeamos hacia 
+    abajo utilizando Math.floor().
+    
+    Días: Finalmente, tomamos las horas calculadas y las dividimos por 24 (1 día = 24 horas). Redondeamos 
+    hacia abajo utilizando Math.floor(). */
