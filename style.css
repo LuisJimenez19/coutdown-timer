@@ -283,7 +283,8 @@ body {
 /* ----------------FOOTER-------------------- */
 .footer {
   height: 180px;
-  background: url(./images/pattern-hills.svg) center no-repeat;
+  background: url(./images/pattern-hills.svg);
+  background-position:center;
   background-size: cover;
   display: flex;
   flex-direction: column;
