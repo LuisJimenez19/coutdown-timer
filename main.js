@@ -1,15 +1,8 @@
-let targetDate;
 const nowDate = new Date().getTime();
+targetDate = new Date(nowDate + 14 * 23 * 60 * 59 * 1000); // almost 14 days 
 
-if (localStorage.getItem("target-date")) {
-  targetDate =
-    localStorage.getItem("target-date") <= nowDate
-      ? alert("Terminado, elija una nueva fecha")
-      : JSON.parse(localStorage.getItem("target-date"));
-} else {
-  targetDate = new Date("2023-12-07T00:08:00");
-  localStorage.setItem("target-date", JSON.stringify(targetDate.getTime()));
-}
+
+
 
 function getTimeSegmentElements(segmentElement) {
   const segmentDisplay = segmentElement.querySelector(".segment-display");
